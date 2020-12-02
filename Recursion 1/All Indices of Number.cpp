@@ -21,16 +21,27 @@
 
 // Sample Output :
 // 1 3 4
+// Important : 
+// I've done this using two methods. You can try both. allIndexes2 is comparitively easier
 
 #include<iostream>
 using namespace std;
-int allIndexes(int input[], int size, int x, int output[]) {
+int allIndexes1(int input[], int size, int x, int output[]) {
  if(size == 0) return 0;
-    int ans = allIndexes(input+1, size-1, x, output);
+    int ans = allIndexes1(input+1, size-1, x, output);
     for(int i=0; i<ans; i++) output[i] += 1;
     if(input[0] == x){
         for(int i=ans-1; i>=0; i--) output[i+1] = output[i]; 
         output[0] = 0;
+        return ans + 1;
+    }
+    else return ans;
+}
+int allIndexes2(int input[], int size, int x, int output[]){
+    if(size == 0) return 0;
+    int ans = allIndexes2(input, size-1, x, output);
+    if(input[size - 1] == x){
+        output[ans] = size - 1;
         return ans + 1;
     }
     else return ans;
@@ -41,8 +52,10 @@ int main(){
     int *input = new int[n], *output = new int[n];
     for(int i=0; i<n; i++) cin>>input[i];
     cin>>x;
-    int size = allIndexes(input, n, x, output);
-    for(int i=0; i<size; i++) cout<<output[i]<<" ";
+    int size = allIndexes1(input, n, x, output);
+    for(int i=0; i<size; i++) cout<<output[i]<<" "; cout<<endl;
+    size = allIndexes2(input, n, x, output);
+    for(int i=0; i<size; i++) cout<<output[i]<<" "; cout<<endl;
     delete [] input;
     delete [] output;
     return 0;
