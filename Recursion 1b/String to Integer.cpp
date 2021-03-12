@@ -27,10 +27,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int stringToNumber(char input[]){
-    if(strlen(input) == 0) return 0;
-    int ans = stringToNumber(input + 1);
-    return ans + ( ((int)input[0] - 48) * pow(10, strlen(input+1)));
+int stringToNumber(char input[]) {
+	if(strlen(input) == 0) return 0;
+    int a = input[0] - 48;
+    return (a* pow(10, strlen(input) - 1)) + stringToNumber(input+1);
 }
 int main(){
     char input[50];
