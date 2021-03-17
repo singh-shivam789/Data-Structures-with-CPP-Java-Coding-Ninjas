@@ -29,37 +29,49 @@
 #include<iostream>
 using namespace std;
 
-void merge(int arr[], int s, int e){
-    int mid = (s+e) / 2;
-    int temp[1000] = {0};
-    int i,j,k;
-    i = s;
-    j = mid+1; 
-    k = s;
-    while(i<=mid && j<=e){
-        if(arr[i] < arr[j]) temp[k++] = arr[i++];
-        else temp[k++] = arr[j++];
+void mergeArray(int input[], int s, int e){
+    int size = (e - s) + 1;
+    int mid = (s + e) / 2;
+    int *output = new int [size];
+    int i = s;
+    int j = mid + 1;
+    int k = 0;
+    while(i<=mid&&j<=e){
+        if(input[i] >= input[j]){
+            output[k++] = input[j++];
+        }
+        else{
+            output[k++] = input[i++];
+        }
     }
     while(i<=mid){
-        temp[k++] = arr[i++];
+        output[k++] = input[i++];
     }
     while(j<=e){
-        temp[k++] = arr[j++];
+        output[k++] = input[j++];
     }
-    for(int l=s; l<=e; l++) arr[l] = temp[l];
-    return;
+    int m = 0;
+    for(int i=s; i<=e; i++){
+        input[i] = output[m];
+        m++;
+    }
+    delete [] output; 
 }
-void helper(int arr[], int s, int e){
-    if(s >= e) return;
+
+void helper(int input[], int s, int e){
+    if(s >= e){
+        return;
+    }
     else{
-        int mid = (s + e) / 2;
-        helper(arr, s, mid);
-        helper(arr, mid+1, e);
-        merge(arr, s, e);
+        int mid = (s+e) / 2;
+        helper(input, s, mid);
+        helper(input, mid+1, e);
+        mergeArray(input, s, e);
     }
 }
+
 void mergeSort(int input[], int size){
-    return helper(input, 0, size-1);
+    helper(input, 0, size-1);
 }
 
 int main() {
