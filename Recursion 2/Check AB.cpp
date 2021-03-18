@@ -44,11 +44,13 @@ bool checkAB(char input[]) {
         else if(input[1] == '\0'){
             return true;
         } 
-        else
+        else{
             return false;
+	}
     }
-    else
-		return false;
+    else{
+    	return false;
+    }
 }
 
 int main() {
