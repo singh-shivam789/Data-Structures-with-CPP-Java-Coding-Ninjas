@@ -26,6 +26,9 @@ Sample Output:
 15 20 
 15 20 12 */
 
+#include<bits/stdc++.h>
+using namespace std;
+
 void helper(int input[], int size, int output[], int x){
     if(size == 0){
         for(int i=0; i<x; i++){
