@@ -46,28 +46,23 @@ int subset(int input[], int n, int output[][20]) {
         return 1;
     }
     else{
-        int r = subset(input+1, n-1, output);
-        int c = n;
+	int r = subset(input + 1, n-1, output);
         for(int i=0; i<r; i++){
-            for(int j=0; j<c; j++){
-                output[i+r][j] = output[i][j];
-            }
-        }
-        for(int i=r; i<2*r; i++){
-            for(int j=0; j<=c; j++){
+            for(int j=0; j<=n; ++j){
                 if(j == 0){
-                    output[i][j] += 1;
+                    output[r + i][0] = output[i][0] + 1; 
+                    continue;
+                }
+                else if(j == 1){
+                    output[r + i][1] = input[0];
+                    continue;
                 }
                 else{
-                    for(int k=c; k>=1; k--){
-                        output[i][k+1] = output[i][k];
-                    }
-                    output[i][j] = input[0];
-                    break;
+		    output[r+i][j] = output[i][j-1];
                 }
             }
         }
-        return r * 2;
+        return 2 * r;
     }
 }
 
