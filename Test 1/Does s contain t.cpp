@@ -56,6 +56,6 @@ int main(){
     cout<<"true";
   }
 	else{
-    cout<<"false;
+    cout<<"false";
   }
 }
