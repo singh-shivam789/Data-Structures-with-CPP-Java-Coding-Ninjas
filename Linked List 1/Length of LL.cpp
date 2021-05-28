@@ -1,3 +1,9 @@
+/*
+Length of LL
+For a given singly linked list of integers, find and return its length. 
+Do it using an iterative method.
+*/
+
 #include <iostream>
 using namespace std;
 
