@@ -4,7 +4,6 @@ Swap the nodes that are present at the 'i-th' and 'j-th' positions.
 
 Note :
 Remember, the nodes themselves must be swapped and not the datas.
-No need to print the list, it has already been taken care. Only return the new head to the list.
 
 Input format :
 The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
