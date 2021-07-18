@@ -8,9 +8,6 @@ Example :
 Given this linked list: 1 -> 2 -> 3 -> 4 -> 5
 For k = 2, you should return: 2 -> 1 -> 4 -> 3 -> 5
 For k = 3, you should return: 3 -> 2 -> 1 -> 5 -> 4
-
-Note :
-No need to print the list, it has already been taken care. Only return the new head to the list.
  
 Input format :
 The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
