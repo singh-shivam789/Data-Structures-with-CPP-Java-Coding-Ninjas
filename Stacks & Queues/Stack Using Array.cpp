@@ -22,8 +22,8 @@ class Stack{
     int nextIndex;
    
     public:
-    Stack(int totalSize){
-        this -> capacity = totalSize;
+    Stack(){
+        this -> capacity = 5;
         data = new int[capacity];
         nextIndex = 0;
     }
@@ -55,44 +55,54 @@ class Stack{
     
     void push(int element){
         if(nextIndex == capacity){
-            cout<<"Stack is full!"<<endl;
+            int *newData = new int[capacity * 2];
+            for(int i=0; i<capacity; i++){
+                newData[i] = data[i];
+            }
+            delete [] data;
+            capacity = capacity * 2;
+            data = newData;    
         }
-        else{
-            data[nextIndex] = element;
-            nextIndex++;
-        }
+        data[nextIndex] = element;
+        nextIndex++;
     }
+
 };
 
 int main() {
-  fio; ct;
-	Stack s1(5);
+    fio; ct;
+	Stack s1;
 	s1.push(1);
 	s1.push(2);
 	s1.push(3);
 	s1.push(4);
 	s1.push(5);
+	s1.push(6);
+	s1.push(7);
+	s1.push(8);
+	s1.push(9);
+	s1.push(10);
 	cout<<s1.top()<<endl;
 	s1.push(6);
 	s1.pop();
 	s1.pop();
 	s1.pop();
 	cout<<s1.top()<<endl;
-	
 	s1.pop();
 	s1.pop();
 	s1.pop();
-  cout<<s1.top()<<endl;
-  cout<<s1.isEmpty()<<endl;
+	s1.pop();
+    cout<<s1.top()<<endl;
+    cout<<s1.isEmpty()<<endl;
 	return 0;
 }
 
+
 /*
-5
-Stack is full!
-2
-Stack is empty!
-Stack is empty!
--2147483648
-1
+Output: 
+
+10
+8
+4
+0
 */
