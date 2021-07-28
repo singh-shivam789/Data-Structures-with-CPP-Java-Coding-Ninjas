@@ -8,6 +8,18 @@ Peek or Top: Returns top element of stack.
 isEmpty: Returns true if stack is empty, else false.
 Note:push(), pop(), isEmpty() and peek() all take O(1) time. We do not run any loop in any of these operations.
 
+Sample Input:
+97
+98
+99
+100
+101
+
+Sample Output:  
+e
+d
+4 
+
 This is implementation of the Dynamic Stack data structure using array and template:
 */
 
@@ -84,11 +96,4 @@ int main() {
     cout << s1.top() << endl;
     cout << s1.size() << endl;
     return 0;
-    /*
-    Output: 
-    e
-    d
-    4 
-    
-    */
 }
