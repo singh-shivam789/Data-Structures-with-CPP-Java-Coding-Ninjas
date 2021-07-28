@@ -9,11 +9,11 @@ isEmpty: Returns true if stack is empty, else false.
 Note:push(), pop(), isEmpty() and peek() all take O(1) time. We do not run any loop in any of these operations.
 
 Sample Input:
-97
-98
-99
-100
-101
+push(97)
+push(98)
+push(99)
+push(100)
+push(101)
 top()
 pop()
 top()
