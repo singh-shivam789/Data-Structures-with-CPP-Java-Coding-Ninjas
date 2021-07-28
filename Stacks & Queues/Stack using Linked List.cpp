@@ -33,6 +33,12 @@ Sample Input:
 102
 103
 104
+top()
+pop()
+pop()
+pop()
+getsize()
+isEmpty()
 
 Sample Output:
  h
@@ -41,7 +47,6 @@ Sample Output:
  f
  2
  0
-
 */
 
 #include<iostream>
