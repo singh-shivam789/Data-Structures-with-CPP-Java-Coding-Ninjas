@@ -28,11 +28,11 @@ Output for every query should be printed in a separate line.
 Time Limit: 1 second
 
 Sample Input:
-100
-101
-102
-103
-104
+push(100)
+push(101)
+push(102)
+push(103)
+push(104)
 top()
 pop()
 pop()
