@@ -14,6 +14,10 @@ Sample Input:
 99
 100
 101
+top()
+pop()
+top()
+size()
 
 Sample Output:  
 e
