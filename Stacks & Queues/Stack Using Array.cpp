@@ -8,6 +8,35 @@ Pop: Removes an item from the stack. The items are popped in the reversed order 
 Peek or Top: Returns top element of stack.
 isEmpty: Returns true if stack is empty, else false.
 Note:push(), pop(), isEmpty() and peek() all take O(1) time. We do not run any loop in any of these operations.
+Sample Input: 
+push(1)
+push(2)
+push(3)
+push(4)
+push(5)
+push(6)
+push(7)
+push(8)
+push(9)
+push(10)
+top()
+push(6)
+pop()
+pop()
+pop()
+top()
+pop()
+pop()
+pop()
+pop()
+top()
+isEmpty()
+
+Sample Output: 
+10
+8
+4
+0
 
 This is implementation of the Stack data structure using Array:
 */
@@ -98,13 +127,3 @@ int main() {
     cout<<s1.isEmpty()<<endl;
 	return 0;
 }
-
-
-/*
-Output: 
-
-10
-8
-4
-0
-*/
