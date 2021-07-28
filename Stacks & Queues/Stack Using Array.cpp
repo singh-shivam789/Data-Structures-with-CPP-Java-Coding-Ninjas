@@ -12,7 +12,9 @@ Note:push(), pop(), isEmpty() and peek() all take O(1) time. We do not run any l
 This is implementation of the Stack data structure using Array:
 */
 
-#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+#include<climits>
 #define fio ios_base :: sync_with_stdio(false)
 #define ct cin.tie(NULL)
 using namespace std;
