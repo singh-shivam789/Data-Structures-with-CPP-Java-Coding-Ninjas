@@ -52,9 +52,7 @@ Sample Output:
 #include<iostream>
 #include<algorithm>
 #include<climits>
-#include <stack>
-#define fio ios_base :: sync_with_stdio(false)
-#define ct cin.tie(NULL)
+
 using namespace std;
 template<typename T>
 class Node {
