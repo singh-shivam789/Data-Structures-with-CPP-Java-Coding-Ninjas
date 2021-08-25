@@ -1,5 +1,4 @@
 /*
-
 Number of Nodes in a Binary Tree
 
 For a given Binary Tree of type integer find the number of nodes in the tree.
@@ -9,7 +8,7 @@ The first line of each test case contains elements of the first tree in the leve
 The line consists of values of nodes separated by a single space. In case a node is null, we take -1 in its place.
 
 
-For example, the input for the tree depicted in the below image would be:
+For example image would be:
 1
 2 3
 4 -1 5 6
