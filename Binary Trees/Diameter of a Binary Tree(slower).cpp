@@ -3,7 +3,7 @@ Diameter of a Binary Tree
 
 The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes. 
 
-For a given Binary Tree of integers, find and return the height of the tree.
+For a given Binary Tree of integers, find and return the diameter of the tree.
 
 Example:
                         10
