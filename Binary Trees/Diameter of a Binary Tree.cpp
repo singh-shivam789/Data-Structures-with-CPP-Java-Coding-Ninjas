@@ -4,7 +4,8 @@ Diameter of a Binary Tree
 The diameter of a tree (sometimes called the width) is the number of nodes on the longest path between two end nodes. 
 Find and return the diameter of a binary tree.
 
-Complexity : O(n + h)
+Complexity : O(n * h), where n is the number of nodes in the tree, 
+and h is the height of the tree.
 
 Input: 
 1 2 3 4 5 -1 -1 
@@ -86,7 +87,7 @@ BinaryTreeNode<int>* takeInputLevelWise() {
 }
 
 int main() {
-	BinaryTreeNode<int>* root = takeInputLevelWise();
+  BinaryTreeNode<int>* root = takeInputLevelWise();
   cout<<diameter(root)<<endl;
-	delete root;
+  delete root;
 }
