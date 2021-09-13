@@ -21,55 +21,44 @@ Sample Output 1 :
 40
 */
 
-#include<climits>
-class Container{
-    public:
-    TreeNode<int>* largest;
-    TreeNode<int>* secondLargest;
-
-    Container(TreeNode<int>* first, TreeNode<int>* second){
-        this -> largest = first;
-        this -> secondLargest = second;
-    }
-};
-
-Container* getSecondLargestNodeHelper(TreeNode<int>* root){
+#include <utility>
+pair <TreeNode<int>*, TreeNode<int>*> getSecondLargestNodeHelper(TreeNode<int>* root){
     if(root == NULL){
-        return new Container(NULL, NULL);
+        pair <TreeNode<int>*, TreeNode<int>*> ans;
+        ans.first = NULL;
+        ans.second = NULL;
     }
-    else if(root -> children.size() == 0){
-        return new Container(root, NULL);
-    }
-    else{
-        Container* ans = new Container(root, NULL);
-        for(int i=0; i<root -> children.size(); i++){
-            Container* recAns = getSecondLargestNodeHelper(root -> children[i]);
-            if (recAns->largest->data > ans->largest->data) {
-                if (recAns->secondLargest == NULL) {
-                    ans->secondLargest = ans->largest;
-                    ans->largest = recAns->largest;
-                } 
-                else {
-                    if (recAns->secondLargest->data > ans->largest->data) {
-                        ans->secondLargest = recAns->secondLargest;
-                        ans->largest = recAns->largest;
-                    } 
-                    else {
-                        ans->secondLargest = ans->largest;
-                        ans->largest = recAns->largest;
-                    }
+
+    pair <TreeNode<int>*, TreeNode<int>*> ans;
+    ans.first = root;
+    ans.second = NULL;
+    for(int i=0; i<root -> children.size(); i++){
+        pair <TreeNode<int>*, TreeNode<int>*> recAns = getSecondLargestNodeHelper(root -> children[i]);
+        if(recAns.first -> data > ans.first -> data){
+            if(recAns.second == NULL){
+				ans.second = ans.first;
+                ans.first = recAns.first;
+            }
+            else{
+				if(recAns.second -> data > ans.first -> data){
+                    ans.second = recAns.second;
+                    ans.first = recAns.first;
                 }
-            } 
-            else {
-                if (ans->largest->data != recAns->largest->data && (ans->secondLargest == NULL || recAns->largest->data > ans->secondLargest->data)) {
-                    ans->secondLargest = recAns->largest;
+                else{
+                    ans.second = ans.first;
+                    ans.first = recAns.first;
                 }
             }
         }
-        return ans;
+        else{
+            if(recAns.first -> data != ans.first -> data && (ans.second == NULL || ans.second -> data < recAns.first -> data)){
+                ans.second = recAns.first;
+            }
+        }
     }
+    return ans;
 }
 
 TreeNode<int>* getSecondLargestNode(TreeNode<int>* root) {
-    return getSecondLargestNodeHelper(root)->secondLargest;
+    return getSecondLargestNodeHelper(root).second;
 }
