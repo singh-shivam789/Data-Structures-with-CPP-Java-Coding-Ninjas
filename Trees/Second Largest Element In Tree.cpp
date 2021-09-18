@@ -36,11 +36,11 @@ pair <TreeNode<int>*, TreeNode<int>*> getSecondLargestNodeHelper(TreeNode<int>* 
         pair <TreeNode<int>*, TreeNode<int>*> recAns = getSecondLargestNodeHelper(root -> children[i]);
         if(recAns.first -> data > ans.first -> data){
             if(recAns.second == NULL){
-				ans.second = ans.first;
+		ans.second = ans.first;
                 ans.first = recAns.first;
             }
             else{
-				if(recAns.second -> data > ans.first -> data){
+		if(recAns.second -> data > ans.first -> data){
                     ans.second = recAns.second;
                     ans.first = recAns.first;
                 }
