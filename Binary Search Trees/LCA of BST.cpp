@@ -83,7 +83,7 @@ int getLCA(BinaryTreeNode<int>* root , int val1 , int val2){
                 return rightAns; 
             }
             else if(rightAns == -1){
-				        return leftAns;
+ 		return leftAns;
             }
             else{
                 return root -> data;
