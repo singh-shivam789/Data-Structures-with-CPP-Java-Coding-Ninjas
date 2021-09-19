@@ -53,29 +53,31 @@ class TreeNode {
     }
 };
 
-TreeNode<int>* getNextLargerElement(TreeNode<int>* root, int n) {
-	if(root == NULL || root -> children.size() == 0){
-        return root;
+TreeNode<int>* getNextLargerElement(TreeNode<int>* root, int x) {
+    if(root == NULL){
+		return NULL;
     }
-    
-    int compare = INT_MAX;
-    TreeNode<int>* ansNode = NULL;
-    
-    if(root -> data > n && root -> data < compare){
-        compare = root -> data;
-        ansNode = root;
-    }
-    
-    for(int i=0; i<root -> children.size(); i++){
-        TreeNode<int>* recNode = getNextLargerElement(root -> children[i], n);
-        if(recNode != NULL){
-            if(recNode -> data > n && recNode -> data < compare){
-            ansNode = recNode;
-            compare = recNode -> data;
-            }
+    else if(root -> children.size() == 0){
+    	if(root -> data > x){
+            return root;
+        }
+        else{
+            return NULL;
         }
     }
-    return ansNode;
+    else{
+        TreeNode<int>* ans = NULL;
+        if(root -> data > x){
+            ans = root;
+        }
+        for(int i=0; i<root -> children.size(); i++){
+            TreeNode<int>* recAns = getNextLargerElement(root -> children[i], x);
+            if(ans == NULL || recAns -> data < ans -> data){
+				ans = recAns;
+            }
+        }
+        return ans;
+    }
 }
 
 TreeNode<int>* takeInputLevelWise() {
