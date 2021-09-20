@@ -29,6 +29,10 @@ Sample Output 1 :
 25 
 */
 
+/*
+    Approach used: Reverse In-order
+*/
+
 int replaceWithLargerNodesSum(BinaryTreeNode<int>* root, int sum){
     if (root == NULL) {
         return sum;
@@ -42,5 +46,5 @@ int replaceWithLargerNodesSum(BinaryTreeNode<int>* root, int sum){
 }
 
 void replaceWithLargerNodesSum(BinaryTreeNode<int> *root) {
-	replaceWithLargerNodesSum(root, 0);    
+    replaceWithLargerNodesSum(root, 0);    
 }
