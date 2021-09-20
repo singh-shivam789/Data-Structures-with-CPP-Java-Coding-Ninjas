@@ -55,40 +55,44 @@ class BinaryTreeNode {
     }
 };
 
-vector<int>* getPath(BinaryTreeNode<int> *root , int data) {
-    if (root == NULL) {
-        return NULL;
-    }
-
-    if (root->data == data) {
-        vector<int>* v = new vector<int>();
-        v->push_back(root->data);
-        return v;
-    }
-
-    if (root->data < data) {
-        vector<int>* rightOutput = getPath(root->right, data);
-        if (rightOutput != NULL) {
-            rightOutput->push_back(root->data);
-            return rightOutput;
-        }
-        else {
-            return NULL;
-        }
-    }
-    else if (root->data > data) {
-        vector<int>* leftOutput = getPath(root->left, data);
-        if (leftOutput != NULL) {
-            leftOutput->push_back(root->data);
-            return leftOutput;
-        }
-        else {
-            return NULL;
-        }
-    }
-    else {
-        return NULL;
-    }
+vector<int>* getPath(BinaryTreeNode<int>* root, int data) {
+	if (root == NULL) {
+		vector<int>* ans = new vector<int>();
+		return ans;
+	}
+	else if (root->left == NULL && root->right == NULL) {
+		vector<int>* ans = new vector<int>();
+		if (root->data == data) {
+			ans->push_back(root->data);
+			return ans;
+		}
+		else {
+			return ans;
+		}
+	}
+	else {
+		vector<int>* ans = new vector<int>();
+		if (root->data == data) {
+			ans->push_back(root->data);
+			return ans;
+		}
+		else if (data < root->data) {
+			vector<int>* leftAns = getPath(root->left, data);
+			if (leftAns->size() != 0) {
+				ans = leftAns;
+				ans->push_back(root->data);
+			}
+			return ans;
+		}
+		else {
+			vector<int>* rightAns = getPath(root->right, data);
+			if (rightAns->size() != 0) {
+				ans = rightAns;
+				ans->push_back(root->data);
+			}
+			return ans;
+		}
+	}
 }
 
 BinaryTreeNode<int> *takeInput() {
