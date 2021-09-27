@@ -54,13 +54,13 @@ bool isSibling(BinaryTreeNode<int> *root, int p, int q){
     }
     else if(root -> left != NULL && root -> right != NULL){
         if(root -> left -> data == p && root -> right -> data == q){
-            return true;
+            	return true;
         }
         else if(root -> left -> data == q && root -> right -> data == p){
-            return true;
+            	return true;
         }
         else{
-			return isSibling(root -> left, p, q) ||  isSibling(root -> right, p, q);
+		return isSibling(root -> left, p, q) ||  isSibling(root -> right, p, q);
         }
     }
     else{
