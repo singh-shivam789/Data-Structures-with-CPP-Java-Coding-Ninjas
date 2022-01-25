@@ -8,92 +8,82 @@
    -Insert the node at the desired position and print the updated list.
 */
 
-#include <iostream>
+#include<iostream>
 using namespace std;
-
 class Node{
-    public:
-    int data;
-    Node*next;
-    
-    Node(int data){
-        this->data = data;
-        this->next = NULL;
-    }
+  public: 
+  int data; 
+  Node* next;
+
+  Node(int data){
+    this -> data = data;
+    this -> next = NULL;
+  }
+
 };
 
-int findLength(Node* head){
-    int l = 0;
-    Node* temp = head;
-    while(temp != NULL){
-        ++l;
-        temp = temp->next;
-    }
-    return l;
-}
-
-Node* takeInput(){
-    int data;
-    cin>>data;
+  Node* takeInput(){
     Node* head = NULL;
-    Node* tail = NULL;
-    while(data!=-1){
-        Node* newNode = new Node(data);
-        if(head == NULL){
-            head = newNode;
-            tail = newNode;
-        }
-        else{
-            tail -> next = newNode;
-            tail = newNode;
-        }
-        cin>>data;
+    Node* temp = NULL;
+    int data;
+    cin>>data;  
+    while(data != -1){
+      Node* newNode = new Node(data);
+      if(head == NULL){
+        head = newNode;
+        temp = head;  
+      }
+      else{
+        temp -> next = newNode;
+        temp = newNode;
+      }
+      cin>>data;
     }
-    return head;
-}
 
-void print(Node*head){
+    return head;
+  }
+
+  void print(Node* head){
     while(head != NULL){
-        cout<<head->data<<" ";
-        head = head->next;
+      cout << head->data <<" ";
+      head = head -> next;
     }
     cout<<endl;
-    return;
-}
+  }
 
-Node* insert(Node* head, int n, int data){
-    Node* newNode = new Node(data);
-    if(n == 0){
-        newNode->next = head;
-        head = newNode;
-        return head;
-    }
-    else if(findLength(head) < n){
-        return head;
+  Node* insertNode(Node* head, int pos, int data){
+    int count = 0;
+    if(pos == 0){
+      Node* newNode = new Node(data);
+      Node* temp = head -> next;
+      head -> next = NULL;
+      delete head;
+      newNode -> next = temp;
+      return newNode;
     }
     else{
-        Node*temp = head;
-        int count = 0;
-        while(count < n-1){
-            ++count;
-            temp = temp->next;
-        }
-        newNode -> next = temp->next;
-        temp->next = newNode;
-        return head;
+      Node* temp = head;
+      while(count != pos-1 && temp != NULL){
+        temp = temp -> next;
+        count++;
+      }
+      if(temp != NULL && count == pos-1){
+        Node* newNode = new Node(data);  
+        Node* deleteNode = temp -> next;
+        newNode -> next = deleteNode -> next;
+        delete deleteNode;
+        temp -> next = newNode;
+      }
+      return head;
     }
-}
+  }
 
-int main() {
-    int t;
-    cin>>t;
-    while(t--){
-    Node*head = takeInput();
-	    int pos, data;
-	    cin>>pos>>data;
-	    head = insert(head, pos, data);
-      print(head);
-      cout<<endl;
-    }
-	return 0;
+int main(){
+    Node* head = takeInput();
+
+    int pos, data;
+    cin >> pos >> data;
+    head = insertNode(head, pos, data);
+    
+    print(head);
 }
