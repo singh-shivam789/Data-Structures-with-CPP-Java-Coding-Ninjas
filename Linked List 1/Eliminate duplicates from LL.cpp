@@ -84,13 +84,15 @@ Node *removeDuplicates(Node *head){
         return head;
     }
     
-    Node* recNode = removeDuplicates(head -> next);
-    head -> next = recNode;
-    if(head -> data == head -> next -> data){
-        Node* temp = head -> next;
-        head -> next = NULL;
-        delete head;
-        head = temp;
+    Node* current = head;
+    while(current -> next != NULL){
+        Node* save = current -> next;
+        if(current -> data == current -> next -> data){
+            current -> next = save -> next;
+        }
+        else{
+            current = current -> next;
+        }
     }
     return head;
 }
