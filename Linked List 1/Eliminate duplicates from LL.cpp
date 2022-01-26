@@ -80,26 +80,19 @@ void print(Node *head){
 }
 
 Node *removeDuplicates(Node *head){
-    if(head == NULL || head -> next == NULL){
+	if(head == NULL || head -> next == NULL){
         return head;
-    }    
-    else{
-		if(head->data == head->next->data){
-			Node* temp = head;
-            while(temp != NULL){
-                if(head -> data == temp -> data){
-                    temp = temp -> next;
-                }
-                else{
-                    break;
-                }
-            }
-            head -> next = temp;
-        }	  
-        Node* small = removeDuplicates(head-> next);
-        head -> next = small;
-        return head;
-    }	
+    }
+    
+    Node* recNode = removeDuplicates(head -> next);
+    head -> next = recNode;
+    if(head -> data == head -> next -> data){
+        Node* temp = head -> next;
+        head -> next = NULL;
+        delete head;
+        head = temp;
+    }
+    return head;
 }
 
 int main(){
