@@ -51,32 +51,27 @@ class Node{
     cout<<endl;
   }
 
-  Node* insertNode(Node* head, int pos, int data){
-    int count = 0;
-    if(pos == 0){
-      Node* newNode = new Node(data);
-      Node* temp = head -> next;
-      head -> next = NULL;
-      delete head;
-      newNode -> next = temp;
-      return newNode;
+  Node* insertNode(Node* head, int i, int data){
+    Node* newNode = new Node(data);
+    if(i == 0){
+      newNode -> next = head;
+      head = newNode;
+      return head;  
     }
     else{
+      int count = 0;
       Node* temp = head;
-      while(count != pos-1 && temp != NULL){
+      while(temp != NULL && count < i - 1){
         temp = temp -> next;
         count++;
       }
-      if(temp != NULL && count == pos-1){
-        Node* newNode = new Node(data);  
-        Node* deleteNode = temp -> next;
-        newNode -> next = deleteNode -> next;
-        delete deleteNode;
-        temp -> next = newNode;
+      if(temp != NULL && temp -> next != NULL){
+          newNode -> next = temp -> next -> next;
+          temp -> next = newNode;
       }
       return head;
     }
-  }
+}
 
 int main(){
     Node* head = takeInput();
