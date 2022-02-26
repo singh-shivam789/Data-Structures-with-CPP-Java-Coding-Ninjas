@@ -55,7 +55,7 @@ Sample Output 2 :
 #include <vector>
 using namespace std;
 
-vector<int> *getPathHelper(int n, int **edges, bool *visited, int s, int d)
+vector<int> *getPathDFS(int n, int **edges, bool *visited, int s, int d)
 {
   if (s == d)
   {
