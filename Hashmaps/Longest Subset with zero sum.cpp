@@ -25,20 +25,19 @@ The five elements that form the longest subarray that sum up to zero are: -387, 
 */
 
 // O(N^2)
+#include<unordered_map>
 int lengthOfLongestSubsetWithZeroSum(int* arr, int n) {
-    int m = 0;
+	int maxLength = 0;
     for(int i=0; i<n; i++){
         int s = 0;
-        for(int j=i, l=0; j<n; j++){
+        for(int j=i; j<n; j++){
             s += arr[j];
-            l++;
-            if(s == 0) {
-                m = max(l, m);
-                continue;
+            if(s == 0){
+                maxLength = max(j-i+1, maxLength);
             }
         }
     }
-    return m;
+    return maxLength;
 }
 
 // O(N)
