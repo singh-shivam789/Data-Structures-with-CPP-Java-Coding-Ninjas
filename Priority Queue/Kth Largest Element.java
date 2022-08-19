@@ -36,27 +36,25 @@ import java.util.*;
 public class Solution {
 
     public static int kthLargest(int n, int[] input, int k) {
-        ArrayList<Integer> arr = new ArrayList<Integer>();
         PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>();
         for(int i=0; i<k; i++){
             pQueue.add(input[i]);
         }
-
         for(int i=k; i<input.length; i++){
-            int front = pQueue.peek();
-            if(front < input[i]){
+            if(pQueue.peek() < input[i]){
                 pQueue.remove();
                 pQueue.add(input[i]);
             }
         }
-
-        while(!pQueue.isEmpty()){
-            arr.add(pQueue.peek());
-            pQueue.remove();
-        }
-
-		return arr.get(arr.size() - k);
+        return pQueue.peek();
     }
 }
 
-//O(N)
+/*
+Explaination: 
+The size of the min heap is k. 
+1. replace all the minimum elements by the upcoming greater elements. 
+2. at the end of the loop, you'll have a heap containing the k largest elements of the array
+3. as the size of the heap is k, and this is a min-heap, k'th largest element IS ALSO THE SMALLEST ELEMENT IN THE HEAP 
+4. we can get the K'th largest AKA THE SMALLEST ELEMENT JUST BY ACCESSING THE PEAK OF THE HEAP.
+*/
