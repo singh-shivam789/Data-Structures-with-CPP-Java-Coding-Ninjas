@@ -48,7 +48,7 @@ Sample Output 2 :
 
 
 void findMedian(int *arr, int n){
-	priority_queue<int> maxHeap;
+    priority_queue<int> maxHeap;
     priority_queue<int, vector<int>, greater<int>> minHeap;
     
     int size = 1;
