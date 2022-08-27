@@ -70,7 +70,7 @@ void findMedian(int *arr, int n){
     		minHeap.push(arr[i]);        
         }
         else{
-			maxHeap.push(arr[i]);
+		maxHeap.push(arr[i]);
         }
         
         if(abs(maxHeap.size() - minHeap.size()) >= 2){
